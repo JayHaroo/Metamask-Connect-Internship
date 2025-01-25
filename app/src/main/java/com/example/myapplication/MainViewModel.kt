@@ -19,7 +19,6 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(private val ethereum: EthereumFlow) : ViewModel() {
-
     private val _uiEvent = MutableSharedFlow<UiEvent>()
     val uiEvent = _uiEvent.asSharedFlow()
 
@@ -31,7 +30,11 @@ class MainViewModel @Inject constructor(private val ethereum: EthereumFlow) : Vi
             _uiEvent.emit(UiEvent.Message(message))
         }
     }
-
+    /*
+        Handles different UI-triggered events such as connecting to the Ethereum wallet,
+        fetching the wallet balance, or disconnecting. Depending on the event type, it updates the state,
+        interacts with the Ethereum SDK, and emits messages to inform the user of the outcome or errors.
+     */
     fun eventSink(eventSink: EventSink) {
         launch {
             when (eventSink) {
@@ -82,6 +85,11 @@ class MainViewModel @Inject constructor(private val ethereum: EthereumFlow) : Vi
         }
     }
 
+    /*
+        Checks if the Ethereum wallet is connected, and if so, triggers the GetBalance event to fetch and display the wallet balance.
+        If the wallet is not connected, it notifies the user with an error message.
+        This function ensures the wallet balance is up-to-date when called.
+     */
     fun updateBalance() {
         if (ethereum.selectedAddress.isNotEmpty()) {
             eventSink(EventSink.GetBalance)

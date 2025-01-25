@@ -58,6 +58,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx")
     implementation("io.metamask.androidsdk:metamask-android-sdk:0.5.0")
     implementation("com.google.dagger:hilt-android:2.51")
+    implementation("androidx.appcompat:appcompat:1.7.0")
     kapt("com.google.dagger:hilt-compiler:2.51")
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
