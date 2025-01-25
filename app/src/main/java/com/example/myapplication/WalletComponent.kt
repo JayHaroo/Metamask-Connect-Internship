@@ -37,6 +37,15 @@ fun WalletConnectScreen(isConnecting: Boolean, balance: String?, eventSink: (Eve
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
+            if (isConnecting) {
+                Text(
+                    "Status: Connected",
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Medium,
+                    color = Color(0xFF4CAF50)
+                )
+                Spacer(modifier = Modifier.height(8.dp))
+            }
             Icon(
                 Icons.Filled.AccountCircle,
                 contentDescription = "Wallet Icon",
